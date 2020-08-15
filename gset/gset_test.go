@@ -57,7 +57,7 @@ func TestList_NoValue(t *testing.T) {
 }
 
 // TestAppend checks the basic functionality of GSet Append()
-// it should return the GSet back when the append is successfull
+// it should return the GSet back when the append is successful
 func TestAppend(t *testing.T) {
 	expectedValue := []string{"xx"}
 	actualValue, actualError := gset.Append("xx")

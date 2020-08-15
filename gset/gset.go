@@ -44,7 +44,7 @@ func (gset GSet) Lookup(value string) (bool, error) {
 	}
 
 	// Iterative over the GSet and check if the
-	// value is the one we're seraching
+	// value is the one we're searching
 	// return true if the value exists
 	for _, element := range gset.Set {
 		if element == value {
