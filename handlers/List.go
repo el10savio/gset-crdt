@@ -7,11 +7,11 @@ import (
 	log "github.com/sirupsen/logrus"
 )
 
-// List is the HTTP handler used to return 
+// List is the HTTP handler used to return
 // all the values present in the GSet node in the server
 func List(w http.ResponseWriter, r *http.Request) {
 	// Sync the GSets if multiple nodes
-	// are present in a cluster 
+	// are present in a cluster
 	if len(GetPeerList()) != 0 {
 		GSet, _ = Sync(GSet)
 	}

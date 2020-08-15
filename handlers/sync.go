@@ -24,7 +24,7 @@ func Sync(GSet gset.GSet) (gset.GSet, error) {
 		return GSet, errors.New("nil peers present")
 	}
 
-	// Iterate over the peer list and send a /gset/values GET request 
+	// Iterate over the peer list and send a /gset/values GET request
 	// to each peer to obtain its GSet
 	for _, peer := range peers {
 		peerGset, err := SendListRequest(peer)
@@ -69,7 +69,7 @@ func SendListRequest(peer string) (gset.GSet, error) {
 		return _gset, err
 	}
 
-	// Return an empty GSet followed by an error 
+	// Return an empty GSet followed by an error
 	// if the peer's response is not HTTP 200 OK
 	if response.StatusCode != http.StatusOK {
 		return _gset, errors.New("received invalid http response status:" + string(response.StatusCode))

@@ -7,7 +7,7 @@ import (
 	log "github.com/sirupsen/logrus"
 )
 
-// Append is the HTTP handler used to append 
+// Append is the HTTP handler used to append
 // values to the GSet node in the server
 func Append(w http.ResponseWriter, r *http.Request) {
 	var err error
@@ -23,7 +23,7 @@ func Append(w http.ResponseWriter, r *http.Request) {
 		return
 	}
 
-	// DEBUG log in the case of success indicating 
+	// DEBUG log in the case of success indicating
 	// the new GSet and the value appended
 	log.WithFields(log.Fields{
 		"set":   GSet.Set,

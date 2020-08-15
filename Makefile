@@ -25,6 +25,10 @@ build:
 	@echo "Building GSet Server"	
 	go build -o bin/gset main.go
 
+build:
+	@echo "go fmt GSet Server"	
+	go fmt ./...
+
 test:
 	@echo "Testing GSet"	
 	go test -v --cover ./...

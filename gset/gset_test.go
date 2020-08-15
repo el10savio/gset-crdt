@@ -28,8 +28,8 @@ func TestList(t *testing.T) {
 	gset.Set = gset.Clear()
 }
 
-// TestList_UpdatedValue checks the functionality of GSet List() when 
-// multiple values are appended to GSet it should return 
+// TestList_UpdatedValue checks the functionality of GSet List() when
+// multiple values are appended to GSet it should return
 // all the unique values appended to the GSet
 func TestList_UpdatedValue(t *testing.T) {
 	gset.Set, _ = gset.Append("xx")
@@ -44,8 +44,8 @@ func TestList_UpdatedValue(t *testing.T) {
 	gset.Set = gset.Clear()
 }
 
-// TestList_NoValue checks the functionality of GSet List() when 
-// no values are appended to GSet, it should return 
+// TestList_NoValue checks the functionality of GSet List() when
+// no values are appended to GSet, it should return
 // an empty string slice when the GSet is empty
 func TestList_NoValue(t *testing.T) {
 	expectedValue := []string{}
@@ -56,7 +56,7 @@ func TestList_NoValue(t *testing.T) {
 	gset.Set = gset.Clear()
 }
 
-// TestAppend checks the basic functionality of GSet Append() 
+// TestAppend checks the basic functionality of GSet Append()
 // it should return the GSet back when the append is successfull
 func TestAppend(t *testing.T) {
 	expectedValue := []string{"xx"}
@@ -68,8 +68,8 @@ func TestAppend(t *testing.T) {
 	gset.Set = gset.Clear()
 }
 
-// TestAppend_NoValue checks the functionality of GSet Append() 
-// when a nil value is passed to it, it should return 
+// TestAppend_NoValue checks the functionality of GSet Append()
+// when a nil value is passed to it, it should return
 // the an empty string slice back along with an error
 func TestAppend_NoValue(t *testing.T) {
 	expectedValue := []string{}
@@ -82,8 +82,8 @@ func TestAppend_NoValue(t *testing.T) {
 	gset.Set = gset.Clear()
 }
 
-// TestAppend_Duplicate checks the functionality of GSet Append() 
-// when a duplicate value is passed to it, it should return 
+// TestAppend_Duplicate checks the functionality of GSet Append()
+// when a duplicate value is passed to it, it should return
 // only the unique GSet values
 func TestAppend_Duplicate(t *testing.T) {
 	gset.Set, _ = gset.Append("xx")
@@ -127,7 +127,7 @@ func TestClear_EmptyStore(t *testing.T) {
 }
 
 // TestLookup checks the basic functionality of GSet Lookup() function
-// it returns a boolean if a value passed is present in the GSet set or not 
+// it returns a boolean if a value passed is present in the GSet set or not
 func TestLookup(t *testing.T) {
 	gset.Set, _ = gset.Append("xx")
 
@@ -155,7 +155,7 @@ func TestLookup_NotPresent(t *testing.T) {
 }
 
 // TestLookup_EmptySet checks the functionality of GSet Lookup() function
-// it returns false if the GSet is empty irrespective of the value passed 
+// it returns false if the GSet is empty irrespective of the value passed
 func TestLookup_EmptySet(t *testing.T) {
 	expectedValue := false
 	actualValue, actualError := gset.Lookup("xx")

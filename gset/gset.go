@@ -4,13 +4,13 @@ import (
 	"errors"
 )
 
-// package gset implements the GSet CRDT data type along with the functionality to 
-// append, list & lookup values in a GSet. It also provides the functionality to 
+// package gset implements the GSet CRDT data type along with the functionality to
+// append, list & lookup values in a GSet. It also provides the functionality to
 // merge multiple GSets together and a utility function to clear a GSet used in tests
 
 // GSet is the GSet CRDT data type
 type GSet struct {
-	// Set contains all the string 
+	// Set contains all the string
 	// values stored in the GSet
 	Set []string `json:"set"`
 }
@@ -20,7 +20,7 @@ func Initialize() GSet {
 	return GSet{Set: make([]string, 0)}
 }
 
-// Append adds a new unique value to the GSet using the 
+// Append adds a new unique value to the GSet using the
 // union operation for each value on the existing GSet
 func (gset GSet) Append(value string) ([]string, error) {
 	// Return an error if the value passed is nil
@@ -30,20 +30,20 @@ func (gset GSet) Append(value string) ([]string, error) {
 
 	// Set = Set U value
 	gset.Set = Union(gset.Set, value)
-	
+
 	// Return the new GSet followed by nil error
 	return gset.Set, nil
 }
 
 // Lookup returns either boolean true/false indicating
-// if a given value is present in the GSet or not 
+// if a given value is present in the GSet or not
 func (gset GSet) Lookup(value string) (bool, error) {
 	// Return an error if the value passed is nil
 	if value == "" {
 		return false, errors.New("empty value provided")
 	}
 
-	// Iterative over the GSet and check if the 
+	// Iterative over the GSet and check if the
 	// value is the one we're seraching
 	// return true if the value exists
 	for _, element := range gset.Set {
@@ -52,7 +52,7 @@ func (gset GSet) Lookup(value string) (bool, error) {
 		}
 	}
 
-	// If the value isn't found after iterating 
+	// If the value isn't found after iterating
 	// over the entire GSet we return false
 	return false, nil
 }
@@ -62,7 +62,7 @@ func (gset GSet) List() []string {
 	return gset.Set
 }
 
-// Merge conbines multiple GSets together using Union 
+// Merge conbines multiple GSets together using Union
 // and returns a single merged GSet
 func Merge(GSets ...GSet) (GSet, error) {
 	var gsetMerged GSet
@@ -78,12 +78,11 @@ func Merge(GSets ...GSet) (GSet, error) {
 		}
 	}
 
-	
 	// Return the merged GSet followed by nil error
 	return gsetMerged, nil
 }
 
-// Clear is utility function used only for tests 
+// Clear is utility function used only for tests
 // to empty the contents of a given GSet
 func (gset GSet) Clear() []string {
 	gset.Set = []string{}
