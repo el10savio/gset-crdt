@@ -33,7 +33,7 @@ func Sync(GSet gset.GSet) (gset.GSet, error) {
 	}
 
 	log.WithFields(log.Fields{
-		"set": GSet,
+		"set": GSet.Set,
 	}).Debug("successful gset sync")
 
 	return GSet, nil

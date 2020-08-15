@@ -9,12 +9,12 @@ import (
 
 // Values ...
 func Values(w http.ResponseWriter, r *http.Request) {
-	GSet := GSet.List()
+	set := GSet.List()
 
 	log.WithFields(log.Fields{
-		"set": GSet,
-	}).Debug("successful gset list")
+		"set": set,
+	}).Debug("successful gset values")
 
 	// json encode response value
-	json.NewEncoder(w).Encode(GSet)
+	json.NewEncoder(w).Encode(set)
 }
