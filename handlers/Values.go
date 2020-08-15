@@ -7,12 +7,8 @@ import (
 	log "github.com/sirupsen/logrus"
 )
 
-// List ...
-func List(w http.ResponseWriter, r *http.Request) {
-	if len(GetPeerList()) != 0 {
-		GSet, _ = Sync(GSet)
-	}
-
+// Values ...
+func Values(w http.ResponseWriter, r *http.Request) {
 	GSet := GSet.List()
 
 	log.WithFields(log.Fields{

@@ -8,7 +8,7 @@ import (
 
 // GSet ...
 type GSet struct {
-	Set []string
+	Set []string `json:"set"`
 }
 
 // Initialize ...

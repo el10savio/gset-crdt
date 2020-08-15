@@ -32,6 +32,7 @@ type Route struct {
 var Routes = []Route{
 	{"/", "GET", Index},
 	{"/gset/list", "GET", List},
+	{"/gset/values", "GET", Values},
 	{"/gset/lookup/{value}", "GET", Lookup},
 	{"/gset/append/{value}", "POST", Append},
 }

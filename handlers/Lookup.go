@@ -15,6 +15,10 @@ func Lookup(w http.ResponseWriter, r *http.Request) {
 	// Obtain the value from URL params
 	value := mux.Vars(r)["value"]
 
+	if len(GetPeerList()) != 0 {
+		GSet, _ = Sync(GSet)
+	}
+
 	present, err = GSet.Lookup(value)
 	if err != nil {
 		log.WithFields(log.Fields{"error": err}).Error("failed to lookup gset value")
