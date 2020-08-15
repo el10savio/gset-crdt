@@ -4,7 +4,7 @@ GSet CRDT Cluster implemented in Go & Docker
 
 ## Introduction
 
-CRDTs (Commutative Replicated Data Types) are a certain form of data types that when replicated across several nodes over a network achieve eventual consistency without the need of a consensus round. GSets abbreviated as grow-only sets are CRDT sets modified to only add data into it and becomes consistent across nodes in a cluster having replicated the set.
+CRDTs (Commutative Replicated Data Types) are a certain form of data types that when replicated across several nodes over a network achieve eventual consistency without the need for a consensus round. GSets abbreviated as grow-only sets are CRDT sets modified to only add data into it and becomes consistent across nodes in a cluster having replicated the set.
 
 ## Example
 
@@ -15,7 +15,7 @@ $ curl -i -X POST localhost:8080/gset/append/user1
 $ curl -i -X POST localhost:8081/gset/append/user2
 ```
 
-When reading the list of values in the set they then sync up with each other and thus return consistent values everytime from any node in the cluster
+When reading the list of values in the set they then sync up with each other and thus return consistent values every time from any node in the cluster
 
 ```
 $ curl -i -X GET localhost:8081/gset/list
@@ -64,7 +64,7 @@ To view the status of the cluster
 $ make info
 ```
 
-Now we can send requests to append, list and lookup values to any peer node using its port allocated.
+Now we can send requests to append, list, and lookup values to any peer node using its port allocated.
 
 ```
 $ curl -i -X POST localhost:<peer-port>/gset/append/<value>
@@ -84,15 +84,15 @@ This is not certain to clean up all the locally created docker images at times. 
 
 ## GSets
 
-CRDTs aim to be an alternative for consensus based distributed algorithms. Algorithms such as Paxos, Raft, etc tend to be more intensive on the network during their consensus phase and are a hassle when nodes in the cluster are very far apart from each other eg., WAN networks.
+CRDTs aims to be an alternative for consensus-based distributed algorithms. Algorithms such as Paxos, Raft, etc tend to be more intensive on the network during their consensus phase and are a hassle when nodes in the cluster are very far apart from each other eg., WAN networks.
 
 GSets are a simple example of CRDTs that are used to implement sets that can only add data & not remove data.
 
 This is useful in certain scenarios like a unique site visitor list that saves a list of unique site visitors as it only increases and values cannot be removed.
 
-To implement this we can build a cluster of GSet nodes of an arbitrary size and a proxy in front of it to direct traffic to the nodes. When a we want to store the ID of a new visitor we can send a write request to any node in the cluster or for the sake of availability, duplicate and send it to multiple nodes in the cluster. A property of CRDTs, immutability ensures that duplicate values are discarded in the set using an union operation. The nodes can either sync up with each other using operation-based replication or state-based replication and thus all of them get in sync and become eventually consistent.
+To implement this we can build a cluster of GSet nodes of arbitrary size and a proxy in front of it to direct traffic to the nodes. When we want to store the ID of a new visitor we can send a write request to any node in the cluster or for the sake of availability, duplicate and send it to multiple nodes in the cluster. A property of CRDTs, immutability ensures that duplicate values are discarded in the set using union operation. The nodes can either sync up with each other using operation-based replication or state-based replication and thus all of them get in sync and become eventually consistent.
 
 ## References
 
-- [A comprehensive study ofConvergent and Commutative Replicated Data Types](https://hal.inria.fr/inria-00555588/document) [Marc Shapiro et al]
+- [A comprehensive study of Convergent and Commutative Replicated Data Types](https://hal.inria.fr/inria-00555588/document) [Marc Shapiro et al]
 - [Strong Eventual Consistency and Conflict-free Replicated Data Types](https://www.youtube.com/watch?v=oyUHd894w18&t=3902s) [Marc Shapiro]
