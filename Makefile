@@ -25,7 +25,7 @@ build:
 	@echo "Building GSet Server"	
 	go build -o bin/gset main.go
 
-build:
+fmt:
 	@echo "go fmt GSet Server"	
 	go fmt ./...
 
