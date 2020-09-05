@@ -13,7 +13,7 @@ func Values(w http.ResponseWriter, r *http.Request) {
 	// Get the local GSet values
 	set := GSet.List()
 
-	// DEBUG log in the case of successfull
+	// DEBUG log in the case of successful
 	// list indicating the set
 	log.WithFields(log.Fields{
 		"set": set,
