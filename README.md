@@ -43,9 +43,14 @@ We can also lookup if certain values are present in the set
 
 ```
 $ curl -i -X GET localhost:8082/gset/lookup/user1
-> 200 OK
+{
+    present: true
+}
+
 $ curl -i -X GET localhost:8082/gset/lookup/user3
-> 404 NOT FOUND
+{
+    present: false
+}
 ```
 
 ## Steps
