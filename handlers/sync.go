@@ -8,7 +8,7 @@ import (
 
 	log "github.com/sirupsen/logrus"
 
-	"../gset"
+	"github.com/el10savio/gset-crdt/gset"
 )
 
 // Sync merges multiple GSets present in a network to get them in sync

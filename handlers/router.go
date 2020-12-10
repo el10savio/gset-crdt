@@ -7,7 +7,7 @@ import (
 	"github.com/gorilla/mux"
 	log "github.com/sirupsen/logrus"
 
-	"../gset"
+	"github.com/el10savio/gset-crdt/gset"
 )
 
 var (
